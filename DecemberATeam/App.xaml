@@ -1,0 +1,91 @@
+﻿<Application
+    x:Class="SeasonalATeam.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeasonalATeam"
+    xmlns:localClasses="using:SeasonalATeam.Classes">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ControlTemplate x:Key="DecemberCellTemplate" TargetType="localClasses:DecemberWindow">
+
+                <Grid x:Name="CellDecember" Margin="1"
+                      AutomationProperties.Name="{TemplateBinding AccessibleName}"
+                      BorderBrush="{ThemeResource DecemberWindowBorderBrushDefault}" 
+                      BorderThickness="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="3" Grid.ColumnSpan="3" x:Name="PersonImage"
+                        AutomationProperties.AccessibilityView="Raw"
+                        Opacity="{TemplateBinding PersonOpacity}"
+                        Source="{TemplateBinding PersonImage}" />
+                    <Border x:Name="CellBorder" Grid.Row="2" Grid.Column="2" Margin="0"
+                        Background="{ThemeResource DecemberWindowTextBackgroundBrush}" 
+                        Padding="4 0 2 0">
+
+                        <TextBlock Name="DecemberLabel" 
+                            Text="{TemplateBinding Content}"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Foreground="{ThemeResource DecemberWindowTextBrush}" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Margin="0"
+                            Padding="0"  
+                            FontWeight="Bold" />
+                    </Border>
+                    
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Target="CellDecember.BorderBrush" Value="{ThemeResource DecemberWindowBorderBrushFocused}" />
+                                    <Setter Target="CellDecember.BorderThickness" Value="3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                </Grid>
+
+            </ControlTemplate>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushDefault" Color="DarkSlateBlue" />
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushFocused" Color="Cyan" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBrush" Color="Black" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBackgroundBrush" Color="White" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushDefault" Color="DarkGoldenrod" />
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushFocused" Color="Cyan" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBrush" Color="White" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBackgroundBrush" Color="Black" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushDefault" Color="{ThemeResource SystemColorGrayTextColor}" />
+                    <SolidColorBrush x:Key="DecemberWindowBorderBrushFocused" Color="{ThemeResource SystemColorButtonTextColor}" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBrush" Color="{ThemeResource SystemColorWindowTextBrush}" />
+                    <SolidColorBrush x:Key="DecemberWindowTextBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                </ResourceDictionary>
+
+            </ResourceDictionary.ThemeDictionaries>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
