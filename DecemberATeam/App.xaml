@@ -12,9 +12,10 @@
             <ControlTemplate x:Key="DecemberCellTemplate" TargetType="localClasses:DecemberWindow">
 
                 <Grid x:Name="CellDecember" Margin="1"
-                      AutomationProperties.Name="{TemplateBinding AccessibleName}"
-                      BorderBrush="{ThemeResource DecemberWindowBorderBrushDefault}" 
-                      BorderThickness="1">
+                        AutomationProperties.Name="{Binding AccessibleName, Mode=TwoWay, 
+                        RelativeSource={RelativeSource TemplatedParent}}"
+                    BorderBrush="{ThemeResource DecemberWindowBorderBrushDefault}" 
+                    BorderThickness="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -27,14 +28,17 @@
                     </Grid.ColumnDefinitions>
                     <Image Grid.RowSpan="3" Grid.ColumnSpan="3" x:Name="PersonImage"
                         AutomationProperties.AccessibilityView="Raw"
-                        Opacity="{TemplateBinding PersonOpacity}"
-                        Source="{TemplateBinding PersonImage}" />
+                        Opacity="{Binding PersonOpacity, Mode=TwoWay, 
+                            RelativeSource={RelativeSource TemplatedParent}}"
+                        Source="{Binding PersonImage, Mode=TwoWay, 
+                            RelativeSource={RelativeSource TemplatedParent}}" />
                     <Border x:Name="CellBorder" Grid.Row="2" Grid.Column="2" Margin="0"
                         Background="{ThemeResource DecemberWindowTextBackgroundBrush}" 
                         Padding="4 0 2 0">
 
                         <TextBlock Name="DecemberLabel" 
-                            Text="{TemplateBinding Content}"
+                            Text="{Binding Content, Mode=TwoWay, 
+                                RelativeSource={RelativeSource TemplatedParent}}"
                             AutomationProperties.AccessibilityView="Raw"
                             Foreground="{ThemeResource DecemberWindowTextBrush}" 
                             HorizontalAlignment="Center"
